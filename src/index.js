@@ -6,13 +6,14 @@ const MetadataProxy = require('./MetadataProxy.js');
 
 const app = express()
 app.use(cors())
-const port = 3000
+const port = 3333
 
+//Starting the setup of the Proxy
 MetadataProxy.setup();
 
 app.get('/', async (req, res) => {
+    //Checks if the Proxy is ready
     if (MetadataProxy.isProxyReady()) {
-        //if Query does not contain Address fail
         try {
             let data = await MetadataProxy.fetchMetadata()
             res.status(200).json({ metadata: data })

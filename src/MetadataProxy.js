@@ -64,11 +64,13 @@ async function setup() {
   }
 }
 
+//Self explanatory
 function fetchMetadata() {
   console.log("Fetching data.")
   return metadata;
 }
 
+//Self explanatory
 function isProxyReady() {
   return isReady;
 }
