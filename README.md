@@ -7,7 +7,7 @@ npm install
 
 ### Run Project
 
-Navigate to the folder, where the files reside, then:
+Navigate to the folder, where the ->index.js<- file resides, then:
 ```
 node .
 ```
@@ -18,7 +18,7 @@ A GET on the basic URL should do the trick
 I tested it with Axios.
 See below:
 ```
-let info;
-axios.get("http://localhost:3000/",{params: address:"0X5B38DA6A701C568545DCFCB03FCB875F56BEDDC4"}})
-.then(response=>this.info=response.data.proof)
+let someVariable;
+axios.get("http://localhost:3333/")
+.then(response=>this.someVariable=response.data.metadata)
 ```
