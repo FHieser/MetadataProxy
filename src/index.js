@@ -15,8 +15,21 @@ app.get('/', async (req, res) => {
     //Checks if the Proxy is ready
     if (MetadataProxy.isProxyReady()) {
         try {
-            let data = await MetadataProxy.fetchMetadata()
-            res.status(200).json({ metadata: data })
+            let data = await MetadataProxy.fetchAllMetadata()
+            res.status(200).json({ data: data })
+        }
+        catch (e) {
+            console.log(e)
+            res.status(500).send({ message: "Could not fetch Data." })
+            return
+        }
+    }
+    else{
+        res.status(503).send({ message: "Proxy ist still booting up." })
+    }
+
+})
+
 app.get('/getDataForToken', async (req, res) => {
     //Checks if the Proxy is ready
     if (MetadataProxy.isProxyReady()) {
