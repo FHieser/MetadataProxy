@@ -17,6 +17,21 @@ app.get('/', async (req, res) => {
         try {
             let data = await MetadataProxy.fetchMetadata()
             res.status(200).json({ metadata: data })
+app.get('/getDataForToken', async (req, res) => {
+    //Checks if the Proxy is ready
+    if (MetadataProxy.isProxyReady()) {
+        try {
+            let TokenID = req.query.TokenID;
+            if(MetadataProxy.isTokenInMetadata(TokenID)){
+                let data = await MetadataProxy.fetchMetadataOfToken(TokenID)
+                res.status(200).json({ data: data })
+            }
+            else{
+                res.status(400).send({ message: "Metadata for TokenID is not available." })
+                return
+            }
+
+            
         }
         catch (e) {
             console.log(e)
