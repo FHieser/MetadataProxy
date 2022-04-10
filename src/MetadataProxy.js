@@ -46,7 +46,7 @@ async function setup() {
             "https://gateway.moralisipfs.com/ipfs/" + ifpsUri + id + ".json";
 
           //Simple GET fetch that adds the returned metadata to the const
-          await axios.get(ifpsLink).then((response) => (metadata[id] = response.data));
+          await axios.get(ifpsLink).then((response) => (metadata[id] = { tokenId: id, metadata: response.data }));
           console.log("Metadata done for id: ", id);
           break;
         } catch (error) {
