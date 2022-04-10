@@ -64,18 +64,30 @@ async function setup() {
   }
 }
 
-//Self explanatory
-function fetchMetadata() {
-  console.log("Fetching data.")
+
+function fetchAllMetadata() {
+  console.log("Fetching all data.")
   return metadata;
 }
 
-//Self explanatory
+
 function isProxyReady() {
   return isReady;
 }
 
+
+function fetchMetadataOfToken(TokenID) {
+  console.log("Fetching data of ID: ", TokenID)
+  return metadata[TokenID];
+}
+
+function isTokenInMetadata(TokenID) {
+  return metadata.length >= TokenID;
+}
+
 //Allows the usage of the function outside of the .js file
-exports.fetchMetadata = fetchMetadata;
+exports.fetchAllMetadata = fetchAllMetadata;
+exports.fetchMetadataOfToken = fetchMetadataOfToken;
+exports.isTokenInMetadata = isTokenInMetadata;
 exports.isProxyReady = isProxyReady;
 exports.setup = setup;
